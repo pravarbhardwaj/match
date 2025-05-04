@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"  # Map port 8000 on the host to port 8000 on the container
+    depends_on:
+      - redis  # Ensures that Redis starts before FastAPI
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    networks:
+      - app-network
+    env_file:
+      - .env
+
+  redis:
+    image: redis:latest  # Use the official Redis image
+    container_name: redis
+    ports:
+      - "6379:6379"  # Expose Redis port
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
