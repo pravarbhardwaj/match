@@ -17,7 +17,7 @@ class User(Base):
     age = Column(Integer)
     gender = Column(String)
     interests = Column(String)
-    geohash = Column(String, index=True)  # Add geohash with index for optimized querying
+    geohash = Column(String, index=True) 
 
 
 class UserActivity(Base):

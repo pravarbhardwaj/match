@@ -14,11 +14,10 @@ def get_seconds_until_eod():
     eod = datetime.combine(now.date(), datetime.max.time())
     return int((eod - now).total_seconds())
 
-# Store today's activities in Redis with TTL of 24 hours (86400 seconds)
 def store_today_activity_in_redis(user_id, activity_data):
     today = get_today_date()
     redis_key = f"activity:{today}:{user_id}"
-    r.rpush(redis_key, json.dumps(activity_data))  # Append to list
+    r.rpush(redis_key, json.dumps(activity_data))
     r.expire(redis_key, get_seconds_until_eod())
 
 

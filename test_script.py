@@ -1,5 +1,5 @@
 import requests
-import geohash  # Use geohash for encoding geohash
+import geohash 
 import random
 from faker import Faker
 import math
@@ -64,7 +64,7 @@ def create_activity(actor_id, target_id, status):
     activity = {
         "actor_id": actor_id,
         "target_id": target_id,
-        "status": status  # 1 = MATCHED, 2 = BLOCKED, 3 = DISLIKED
+        "status": status  
     }
     res = requests.post(f"{BASE_URL}/activity/{actor_id}", json=activity)
     if res.status_code == 200:
