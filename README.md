@@ -35,6 +35,12 @@ Built with **FastAPI**, **SQLite**, **Redis**, **Geohash**, and **Docker** for p
 - To run it without docker - create virtual environment then run ```pip install -r requirements.txt``` and then run the project using command ```fastapi dev main.py```
 
 ---
+
+## Migration
+
+- To run migrations use alembic command ```alembic revision --autogenerate -m "Models Migration"``` and then migrate is using ```alembic upgrade head```
+
+---
 ### Code Logic
 - All the APIs will be listed on localhost:8000/docs url using Swagger
 - test script is placed in root with name test_script.py. It can be executed standalone using python with server running or via project api using ```/run_script```
